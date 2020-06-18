@@ -46,37 +46,44 @@ const validateFormFields = () => {
     element.addEventListener("keyup", validate, false);
   });
 };
+
+// load pages functions
+const otpBtn = document.querySelector("#otpBtn");
+const verifyOtpBtn = document.getElementById("verifyOtp")
+const resetPassBtn = document.querySelector("#resendPassBtn");
+const loginBtn = document.getElementById("loginBtn")
+  const loadOtpPage = () =>{
+    return window.location.assign("password-otp.html")
+  }
+  const loadPassResetPage = () =>{
+    return window.location.assign("password-reset.html")
+  }
+  const loadSuccessPage = () =>{
+    return window.location.assign("password-recovered.html")
+  }
+  const loadLoginPage = () => {
+    return window.location.assign("home.html")
+  }
+  
 const presentPageBody = document.querySelector("body");
 if (
   presentPageBody.classList.contains("pass_page") ||
-  presentPageBody.classList.contains("otp_page")
+  presentPageBody.classList.contains("otp_page") || 
+  presentPageBody.classList.contains("pass_reset-page")
 ) {
-  validateFormFields();
+  validateFormFields(); 
+}
+if(presentPageBody.classList.contains("pass_page")){
+  otpBtn.addEventListener("click", loadOtpPage, false)
+}
+if(presentPageBody.classList.contains("otp_page")){
+  verifyOtpBtn.addEventListener("click",loadPassResetPage, false)
+}
+if(presentPageBody.classList.contains("pass_reset-page")){
+  resendPassBtn.addEventListener("click",loadSuccessPage, false)
+}
+if(presentPageBody.classList.contains("success")){
+  loginBtn.addEventListener("click",loadLoginPage, false)
 }
 
-// validateFormFields();
 
-// const presentPageBody = document.querySelector('body')
-
-//   const otpBtn = document.querySelector("#otpBtn");
-//   console.log(otpBtn)
-//   const resetPassBtn = document.querySelector("#resendPassBtn");
-
-//   const verifyOtp = document.getElementById("verifyOtp");
-//   const loginBtn = document.getElementById("login");
-
-//   const loadOtpPage = () =>{
-//     return window.location.assign("password-otp.html")
-//   }
-//   const loadPassResetPage = () =>{
-//     return window.location.assign("password-reset.html")
-//   }
-//   const loadSuccessPage = () =>{
-//     return window.location.assign("password-recovered.html")
-//   }
-
-//   if(presentPageBody.classList.contains('pass_page')){
-//     otpBtn.addEventListener("click", loadOtpPage, false);
-//   }else if(presentPageBody.classList.contains('otp_page')){
-//     resetPassBtn.addEventListener("click", loadPassResetPage, false)
-//   }
