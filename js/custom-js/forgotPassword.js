@@ -6,12 +6,12 @@ const validateFormFields = () => {
         "OTP must be a digit",
     },
     number: {
-      expected: () => /^[0-9]{6}$/,
-      failureResponse: "OTP must be six digits",
+      expected: () => /^[0-9]{1}$/,
+      failureResponse: "OTP must be a digit",
     },
     email: {
       expected: () => /([A-z0-9.-_]+)@([A-z]+)\.([A-z]){2,5}$/,
-      failureResponse: "is invalid. Must include @domain.com",
+      failureResponse: "is invalid. Must include @....com",
     },
     password: {
       expected: () => /[a-zA-Z0-9\w!@#$%^&*()_+|]{8,20}$/,
@@ -28,7 +28,6 @@ const validateFormFields = () => {
   function validate() {
     const valTypeStore = validValuesObj[this.dataset.valType || this.type];
     if (valTypeStore.expected().test(this.value)) {
-      // console.log(this.parentElement.children[1])
       this.parentElement.children[1].textContent = "";
       formSubmitBtn.removeAttribute("disabled");
     } else {
@@ -42,7 +41,8 @@ const validateFormFields = () => {
   console.log(fieldsToBeValidated);
   fieldsToBeValidated.forEach((element) => {
     const elementToDisplayError = document.querySelector(".error");
-    elementToDisplayError.style.color = "red"
+    elementToDisplayError.style.color = "red";
+
     element.addEventListener("keyup", validate, false);
   });
 };
