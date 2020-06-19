@@ -38,7 +38,7 @@ const validateFormFields = () => {
 
   // const fieldsToBeValidated = document.querySelectorAll('.create-account label input');
   const fieldsToBeValidated = document.querySelectorAll("input");
-  console.log(fieldsToBeValidated);
+  // console.log(fieldsToBeValidated);
   fieldsToBeValidated.forEach((element) => {
     const elementToDisplayError = document.querySelector(".error");
     elementToDisplayError.style.color = "red";
